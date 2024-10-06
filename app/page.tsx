@@ -1,101 +1,121 @@
-import Image from "next/image";
+import Meal from './components/Meal';
+
+interface MealItem {
+  name: string;
+  quantity: number;
+  calories: number;
+  protein: number;
+}
+
+interface MealData {
+  mealNumber: string;
+  mealTitle: string;
+  items: MealItem[];
+  totalCalories: number;
+  totalProtein: number;
+}
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const mealPlan: MealData[] = [
+    {
+      mealNumber: 'Meal 1',
+      mealTitle: 'Breakfast (8:00 AM)',
+      items: [
+        { name: 'Oats', quantity: 80, calories: 320, protein: 12 },
+        { name: 'Milk (skimmed)', quantity: 250, calories: 88, protein: 8 },
+        { name: 'Boiled eggs', quantity: 3, calories: 240, protein: 18 },
+        { name: 'Banana', quantity: 100, calories: 89, protein: 1 },
+      ],
+      totalCalories: 737,
+      totalProtein: 39,
+    },
+    {
+      mealNumber: 'Meal 2',
+      mealTitle: 'Mid-Morning Snack (11:00 AM)',
+      items: [
+        { name: 'Greek yogurt (plain, low-fat)', quantity: 150, calories: 95, protein: 12 },
+        { name: 'Mixed nuts (almonds, walnuts)', quantity: 20, calories: 130, protein: 4 },
+      ],
+      totalCalories: 225,
+      totalProtein: 16,
+    },
+    {
+      mealNumber: 'Meal 3',
+      mealTitle: 'Lunch (1:00 PM)',
+      items: [
+        { name: 'Paneer (low-fat)', quantity: 100, calories: 190, protein: 18 },
+        { name: 'Brown rice', quantity: 100, calories: 112, protein: 3 },
+        { name: 'Mixed vegetable curry (spinach, carrots, peas)', quantity: 200, calories: 150, protein: 6 },
+        { name: 'Roti (whole wheat)', quantity: 2, calories: 210, protein: 6 },
+      ],
+      totalCalories: 662,
+      totalProtein: 33,
+    },
+    {
+      mealNumber: 'Meal 4',
+      mealTitle: 'Pre-Workout Snack (4:00 PM)',
+      items: [
+        { name: 'Boiled eggs', quantity: 2, calories: 160, protein: 12 },
+        { name: 'Sweet potato', quantity: 100, calories: 86, protein: 2 },
+      ],
+      totalCalories: 246,
+      totalProtein: 14,
+    },
+    {
+      mealNumber: 'Meal 5',
+      mealTitle: 'Post-Workout (7:30 PM)',
+      items: [
+        { name: 'Scrambled eggs', quantity: 4, calories: 320, protein: 24 },
+        { name: 'Whole wheat bread', quantity: 2, calories: 180, protein: 6 },
+        { name: 'Fruit (apple or orange)', quantity: 100, calories: 80, protein: 1 },
+      ],
+      totalCalories: 580,
+      totalProtein: 31,
+    },
+    {
+      mealNumber: 'Meal 6',
+      mealTitle: 'Dinner (8:30 PM)',
+      items: [
+        { name: 'Lentils (dal)', quantity: 200, calories: 230, protein: 16 },
+        { name: 'Roti (whole wheat)', quantity: 2, calories: 210, protein: 6 },
+        { name: 'Vegetable stir-fry (broccoli, capsicum, zucchini)', quantity: 150, calories: 70, protein: 4 },
+      ],
+      totalCalories: 510,
+      totalProtein: 26,
+    },
+    {
+      mealNumber: 'Meal 7',
+      mealTitle: 'Before Bed (10:30 PM)',
+      items: [
+        { name: 'Boiled eggs', quantity: 2, calories: 160, protein: 12 },
+        { name: 'Peanut butter (natural, unsweetened)', quantity: 20, calories: 118, protein: 5 },
+      ],
+      totalCalories: 278,
+      totalProtein: 17,
+    },
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+  const totalCalories = mealPlan.reduce((total, meal) => total + meal.totalCalories, 0);
+  const totalProtein = mealPlan.reduce((total, meal) => total + meal.totalProtein, 0);
+
+  return (
+    <div className="p-6 max-w-4xl mx-auto">
+      <h1 className="text-3xl font-bold text-center mb-8">Diet Plan (2800-3100 Calories, Muscle Building)</h1>
+      {mealPlan.map((meal, index) => (
+        <Meal
+          key={index}
+          mealNumber={meal.mealNumber}
+          mealTitle={meal.mealTitle}
+          items={meal.items}
+          totalCalories={meal.totalCalories}
+          totalProtein={meal.totalProtein}
+        />
+      ))}
+      <div className="mt-8 p-4 border-t-2 border-gray-300">
+        <h2 className="text-xl font-semibold">Daily Totals</h2>
+        <p><strong>Calories:</strong> {totalCalories} kcal</p>
+        <p><strong>Protein:</strong> {totalProtein} g</p>
+      </div>
     </div>
   );
 }
